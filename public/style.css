@@ -1,3 +1,47 @@
 header {
-    color: yellow;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    background: rgb(52, 77, 191);
+    padding: 4px 12px;
+    color: #fff;
+    user-select: none;
+}
+
+.goods-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.good-item {
+    background: #eee;
+    padding: 20px;
+    margin: 10px;
+}
+
+.good-item img {
+    width: 200px;
+}
+
+.meta__row {
+    margin: 8px 0;
+}
+
+.cart_list {
+    display: none;
+    height: 200px;
+    width: 100px;
+    background: white;
+    color: violet;
+}
+
+.cart_list.shown {
+    display: block;
 }
