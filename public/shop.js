@@ -199,6 +199,59 @@ class GoodItemInCard extends GoodItem {
     }
 }
 
+class Form{
+    constructor(){
+        renderForm()
+        renderBtn()
+        btnAction()
+    }
+    renderForm(){
+        const placeToHolder = document.querySelector('.footer')
+        if(footer){
+            const form = document.createElement('form')
+            placeToHolder.appendChild(form)
+            const labelName = document.createElement('span')
+            form.appendChild(labelName)
+            const name = document.createElement('input')
+            name.type = 'text'
+            form.appendChild(name)
+        }
+    }
+    renderBtn(){
+        const placeToHolder = document.querySelector('form')
+        if (placeToHolder){
+            const button = document.createElement('button')
+            button.type = 'submit'
+            button.classList.add('btn-submit')
+            button.innerText = 'Отправить'
+            placeToHolder.appendChild(button)
+        }
+    }
+    btnAction(){
+        const btn = document.querySelector('.btn-submit')
+        if(btn){
+            btn.addEventListener('submit', (event) =>{
+                event.preventDefault()
+                checkName()
+                checkPhone()
+                checkMail()
+            })
+        }
+    }
+    checkName(){
+        const name = document.querySelector('input')
+        const reName = /^[A-ZА-Я]{1,1}[a-zа-я]{0,}$/g
+        if(reName.test(name.value)){
+            console.log('Имя соотвествует шаблону')
+            return true
+        }
+        else console.log('Имя не соотвествует шаблону')
+        return false
+    }
+
+}
+
 
 const CartInstance = new Card()
 const ListInstance = new List(CartInstance)
+const FormBottom = new Form()
