@@ -45,3 +45,20 @@ header {
 .cart_list.shown {
     display: block;
 }
+
+.footer {
+    padding: 50px;
+}
+
+span {
+    display: block;
+}
+
+input {
+    display: block;
+    margin: 10px;
+}
+
+.btn-submit {
+    margin: 10px;
+}
