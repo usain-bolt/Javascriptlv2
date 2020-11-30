@@ -1,4 +1,4 @@
-class Button{
+export default class Button{
     constructor(text, clb){
         this.text = text
         this.onClickClb = clb
