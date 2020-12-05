@@ -1,37 +1,46 @@
-const path = require('path') // Библиотека
-const Terser = require("terser-webpack-plugin")
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-    entry: './src/main.js', // Точка входа для построения main.js
-    output: {
-        path: path.resolve(__dirname, 'public/js'), // путь, куда мы хотим положить файл с результатом сборки
-        filename: 'main.js'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                use: [
-                    {loader: 'babel-loader'},
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    {loader: 'style-loader'}, // инжектит стили из js модуля в тэги <style></style>
-                    {loader: 'css-loader'}, // трансформирует css файл в js модуль
-                ]
-            }
-        ]
-    },
-    optimization:{
-        minimizer: [
-          new Terser({
-            terserOptions: {
-              keep_classnames: true,
-              keep_fnames: true
-          }
-          })
-        ]
+  entry: './src/shop.js',
+  output: {
+    path: path.resolve(__dirname, 'public/js'),
+    filename: 'shop.js'
+  },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.esm.js'
     }
+  },
+  module: {
+    rules: [
+      // {
+      //   test: /\.js$/,
+      //   use: [
+      //     { loader: 'babel-loader' },
+      //   ]
+      // },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader', // инжектит стили из js модуля в тэги <style></style>
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            }
+          }, // трансформирует css файл в js модуль
+        ]
+      },
+      {
+        test: /\.vue$/,
+        use: [
+          { loader: 'vue-loader' },
+        ]
+      },
+    ]
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ]
 }
