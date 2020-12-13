@@ -20,24 +20,24 @@
 import Item from "./Item.vue";
 
 export default {
-  comments: {
+  components: {
     Item,
   },
   data() {
     return {
       items: [
         { name: "1", price: 1 },
-        { name: "2", price: 1 },
-        { name: "3", price: 1 },
-        { name: "4", price: 1 },
+        { name: "2", price: 2 },
+        { name: "3", price: 3 },
+        { name: "4", price: 4 },
       ],
     };
   },
 };
 </script>
 
-<style>
+<style module>
 .greeting {
   color: red;
 }
-</style>
+</style module>
